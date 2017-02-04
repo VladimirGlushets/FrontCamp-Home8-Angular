@@ -9,10 +9,12 @@
         var self = this;
 
         self.getArticles = getArticles;
+        self.getAllArticles = getAllArticles;
         self.getDetails = getDetails;
         self.create = create;
         self.update = update;
         self.deleteArticle = deleteArticle;
+        self.getArticlesTotal = getArticlesTotal;
 
         function deleteArticle(articleId){
 
@@ -28,8 +30,27 @@
           }).then(extractData);
         }
 
-        function getArticles(){
+        function getAllArticles(){
+            debugger;
           return $http.get(apiRoutes.GetAllArticles).then(extractData);
+        }
+
+        function getArticles(filterObj){
+            debugger;
+            var path;
+
+            if(filterObj){
+                path = apiRoutes.GetAllArticles + '/' + filterObj.Page + '/' + filterObj.ItemsPerPage;
+            }
+            else{
+                path = apiRoutes.GetAllArticles;
+            }
+
+            return $http.get(path).then(extractData);
+        }
+
+        function getArticlesTotal(){
+            return $http.get(apiRoutes.ArticleTotal).then(extractData);
         }
 
         function getDetails(id){

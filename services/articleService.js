@@ -7,6 +7,15 @@ class ArticleService {
         return Article.find({}).exec();
     }
 
+    getArticles(page, itemsPerPage) {
+        var skip = (page - 1) * itemsPerPage;
+        return Article.find({}).skip(skip).limit(10).exec();
+    }
+
+    getArticlesTotal(){
+        return Article.count().exec();
+    }
+
     getArticleById(articleId) {
         return Article.findOne({
             '_id': articleId
