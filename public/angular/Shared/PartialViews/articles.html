@@ -25,10 +25,11 @@
                 boundary-links="true"
                 ng-change="loadArticles()"
                 boundary-link-numbers="true"
-                rotate="false">
+                rotate="false"
+                ng-show="(filterData.length > filterObj.ItemsPerPage)">
                 </uib-pagination>
 
-            <div ng-repeat="item in filterData = (allArticlesSource | filter:{ article : {title : searchText} }) | limitTo:10:10*(filterObj.Page - 1)">
+            <div ng-repeat="item in filterData = (allArticlesSource | filter:{ article : {title : searchText} }) | limitTo:filterObj.ItemsPerPage:filterObj.ItemsPerPage*(filterObj.Page - 1)">
                     <div class="article-container">
                         <div class="body">
                             <div class="image">

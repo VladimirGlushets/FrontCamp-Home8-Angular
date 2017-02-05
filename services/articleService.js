@@ -22,7 +22,7 @@ class ArticleService {
         }).exec();
     }
 
-    deleteArticle(articleId) {      
+    deleteArticle(articleId) {
         return Article.findOne({
             '_id': articleId
         }).remove().exec();
