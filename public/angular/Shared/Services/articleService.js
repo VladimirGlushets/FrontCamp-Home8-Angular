@@ -31,12 +31,10 @@
         }
 
         function getAllArticles(){
-            debugger;
           return $http.get(apiRoutes.GetAllArticles).then(extractData);
         }
 
         function getArticles(filterObj){
-            debugger;
             var path;
 
             if(filterObj){
